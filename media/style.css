@@ -24,15 +24,22 @@ body {
     padding: 20px;
     width: 80%;
     height: 10%;
+    border: 1px solid #579bb4;
+    background-color: white;
+    border-radius: 5px;
 }
 
 .schedule {
-    margin: 10px auto;
-    background-color: white;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
     border-radius: 5px;
     padding: 20px;
     width: 80%;
     height: 80%;
+    border: 1px solid #579bb4;
+    background-color: white;
+    border-radius: 5px;
 }
 
 .scheduleHeader {
@@ -40,10 +47,32 @@ body {
     justify-content: space-between;
 }
 
+.scheduleBody {
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    padding: 20px;
+    width: 80%;
+    height: 80%;
+    border: 1px solid #579bb4;
+    background-color: white;
+    border-radius: 5px;
+}
+
 button {
     padding: 10px;
     font-size: 20px;
     color: #2b415a;
+    border: 1px solid #579bb4;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.form {
+    height: 40px;
+    font-size: 15px; 
+    width: 80%;
     border: 1px solid #579bb4;
     background-color: white;
     border-radius: 5px;
