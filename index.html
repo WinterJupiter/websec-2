@@ -8,7 +8,6 @@
     <link rel="icon" href="templates/favicon.png" type="image/x-icon">
     <script src="media/script.js"></script>
     <title>ssau schedule</title>
-    <title></title>
 </head>
 
 <body>
@@ -16,7 +15,7 @@
     <div class="container">
         <p><h1>Расписание</h1></p>
         <form>
-            <input id="search" class="form" type="text" placeholder="Введите номер группы или ФИО преподавателя" list="searchList"/>
+            <input id="search" list="searchList" class="form" type="text" placeholder="Введите номер группы или ФИО преподавателя" list="searchList"/>
         </form>
     </div>
     <div class="schedule">
@@ -28,10 +27,7 @@
         </div>
     </div>
     <div class="scheduleBody">
-        <table class="scheduleTable">
-          <tr class="scheduleTableRow">
-          </tr>
-        </table>
+        <table id="scheduleTable"></table>
     </div>
 </body>
 </html>

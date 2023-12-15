@@ -4,10 +4,22 @@ import requests
 from bs4 import BeautifulSoup
 
 
-def groupParser():
+def parser():
+    result = {"teachers": []}
     groups = []
-    result = {"groups": []}
-
+    teachers = []
+    for i in range(1, 122):
+        url = "https://ssau.ru/staff?page=" + str(i)
+        response = requests.get(url)
+        teachers.append(response.text)
+        if i == 121:
+            for teacher in teachers:
+                soup = BeautifulSoup(teacher, 'html.parser')
+                teachers_list = soup.select(".list-group-item > a")
+                for t in teachers_list:
+                    staffId = ''.join(filter(str.isdigit, t.get("href")))
+                    result["teachers"].append({"name": t.text, "link": f"/rasp?staffId={staffId}"})
+    
     for i in range(1, 6):
         url = "https://ssau.ru/rasp/faculty/492430598?course=" + str(i)
         response = requests.get(url)
@@ -21,27 +33,9 @@ def groupParser():
 
                 groups.append({"name": group_name, "link": group_link})
                 result["groups"] = groups
-
-                with open("group.json", "w") as json_file:
-                    json.dump(result, json_file)
-
-def teacherParser():
-    teachers = []
-    result = {"teachers": []}
-    for i in range(1, 122):
-        url = "https://ssau.ru/staff?page=" + str(i)
-        response = requests.get(url)
-        teachers.append(response.text)
-        if i == 121:
-            for teacher in teachers:
-                soup = BeautifulSoup(teacher, 'html.parser')
-                teachers_list = soup.select(".list-group-item > a")
-                for t in teachers_list:
-                    staffId = ''.join(filter(str.isdigit, t.get("href")))
-                    result["teachers"].append({ "name": t.text, "link": f"/rasp?staffId={staffId}" })
-            with codecs.open("teacher.json", "w", "utf-8") as stream:
-                stream.write(json.dumps(result, ensure_ascii=False))
+    with codecs.open("groupAndTeachers.json", "w", "utf-8") as stream:
+        stream.write(json.dumps(result, ensure_ascii=False))
+    stream.close()
 
 
-groupParser()
-teacherParser()
+parser()
