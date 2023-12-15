@@ -14,5 +14,6 @@
 
 
 Запуск:
-npm i
-node server
+`cd *folder*`
+`npm i`
+`node server.js`
