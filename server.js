@@ -87,4 +87,4 @@ app.get('/rasp', (req, res) => {
     };
 })
 
-app.get('/groupsAndTeachers', (req, res) => res.sendFile(path.join(__dirname, 'groupsAndTeachers.json')))
+app.get('/groupsAndTeachers', (req, res) => res.sendFile(path.join(__dirname, 'groupAndTeachers.json')))
