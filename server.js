@@ -31,7 +31,8 @@ app.get('/rasp', (req, res) => {
                 date: [],
                 daySchedule: [],
                 time: [],
-                currentWeek: 1
+                currentWeek: 1,
+                selectedGroup: ''
             };
             let html = HTMLParser.parse(request.responseText);
 
@@ -80,6 +81,7 @@ app.get('/rasp', (req, res) => {
             for (let cell of html.querySelectorAll(".schedule__time")) {
                 schedule.time.push(cell.childNodes[0].innerText + cell.childNodes[1].innerText);
             }
+            schedule.selectedGroup = html.querySelector(".info-block__title")?.innerText;
             schedule.currentWeek = html.querySelector(".week-nav-current_week")?.innerText;
             schedule.daySchedule = schedule.daySchedule.slice(6, schedule.daySchedule.length);
             res.send(JSON.stringify(schedule));

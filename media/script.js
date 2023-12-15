@@ -34,7 +34,7 @@ fetch('/groupsAndTeachers')
         }
         stringsGroup.addEventListener("change", () => {
             updateData(stringsGroup.value);
-            document.querySelector(".select").innerHTML = res.groups.find((a) => a.link === stringsGroup.value).name;
+            document.querySelector(".selected").innerHTML = res.groups.find((a) => a.link === stringsGroup.value).name;
             stringsGroup.value = "Group";
         })
 
@@ -47,7 +47,7 @@ fetch('/groupsAndTeachers')
         }
         stringsTeacher.addEventListener("change", () => {
             updateData(stringsTeacher.value);
-            document.querySelector(".select").innerHTML = res.teachers.find((a) => a.link === stringsTeacher.value).name;
+            document.querySelector(".selected").innerHTML = res.teachers.find((a) => a.link === stringsTeacher.value).name;
             stringsTeacher.value = "Teacher";
         })
     })
@@ -93,15 +93,17 @@ function generateSchedule(data) {
                 if (groupOrTeacherInfo.link === null) {
                     continue;
                 }
-                let linkElem = document.createElement("a");
-                linkElem.innerHTML = groupOrTeacherInfo.name;
-                linkElem.addEventListener("click", () => updateData(groupOrTeacherInfo.link));
-                linkElem.classList.add("groupLink");
-                cell.appendChild(linkElem);
+                let links = document.createElement("a");
+                links.innerHTML = groupOrTeacherInfo.name;
+                links.addEventListener("click", () => updateData(groupOrTeacherInfo.link));
+                links.classList.add("groupLink");
+                cell.appendChild(links);
                 cell.appendChild(document.createElement("br"));
             }
         }
         data.daySchedule = data.daySchedule.slice(data.daySchedule.length >= 6 ? 6 : data.daySchedule.length);
+        let head = document.getElementById('selected');
+        head.innerHTML = data.selectedGroup;
     }
 }
 

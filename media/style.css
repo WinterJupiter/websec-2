@@ -73,15 +73,6 @@ button {
     border-radius: 5px;
 }
 
-.form {
-    height: 40px;
-    font-size: 15px; 
-    width: 80%;
-    border: 1px solid #579bb4;
-    background-color: white;
-    border-radius: 5px;
-}
-
 table {   
     font-size: 18px;
     width: 100%;
@@ -99,4 +90,8 @@ td, th {
 
 .tableHead {
     background-color: #a3d9ec;
+}
+
+a{
+    color: #1b92d6;
 }
