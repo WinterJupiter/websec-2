@@ -24,21 +24,32 @@ function updateData(currentUrl) {
 fetch('/groupsAndTeachers')
     .then((data) => data.json())
     .then((res) => {
-        let strings = document.getElementById("searchList");
 
+        let stringsGroup = document.querySelector("#group");
         for (let group of res.groups) {
             let elementGroup = document.createElement("option");
-            elementGroup.setAttribute("value", group.name);
-            elementGroup.innerHTML = group.link;
-            strings.appendChild(elementGroup);
+            elementGroup.innerHTML = group.name;
+            elementGroup.setAttribute("value", group.link);
+            stringsGroup.appendChild(elementGroup);
         }
+        stringsGroup.addEventListener("change", () => {
+            updateData(stringsGroup.value);
+            document.querySelector(".select").innerHTML = res.groups.find((a) => a.link === stringsGroup.value).name;
+            stringsGroup.value = "Group";
+        })
 
+        let stringsTeacher = document.querySelector("#teacher");
         for (let teacher of res.teachers) {
             let elementTeacher = document.createElement("option");
-            elementTeacher.setAttribute("value", teacher.name);
-            elementTeacher.innerHTML = teacher.link;
-            strings.appendChild(elementTeacher);
+            elementTeacher.innerHTML = teacher.name;
+            elementTeacher.setAttribute("value", teacher.link);
+            stringsTeacher.appendChild(elementTeacher);
         }
+        stringsTeacher.addEventListener("change", () => {
+            updateData(stringsTeacher.value);
+            document.querySelector(".select").innerHTML = res.teachers.find((a) => a.link === stringsTeacher.value).name;
+            stringsTeacher.value = "Teacher";
+        })
     })
 
 function generateSchedule(data) {

@@ -12,7 +12,7 @@
 }
 
 *{
-
+    font-family: sans-serif; 
 }
 
 body {
@@ -82,15 +82,14 @@ button {
     border-radius: 5px;
 }
 
-table {
-    font-family: 'Georgia';    
+table {   
     font-size: 18px;
     width: 100%;
     border: 1px solid #2b415a;
     border-collapse: collapse;
     text-align: center;
     table-layout: fixed;
-    background: #fff;
+    background: white;
 }
 
 td, th {

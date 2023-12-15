@@ -11,23 +11,28 @@
 </head>
 
 <body>
-    <datalist id="searchList"></datalist>
     <div class="container">
         <p><h1>Расписание</h1></p>
-        <form>
-            <input id="search" list="searchList" class="form" type="text" placeholder="Введите номер группы или ФИО преподавателя" list="searchList"/>
-        </form>
+        <h3>Выбор группы:</h3>
+        <select id="group">
+            <option> Группа </option>
+        </select>
+        <h3>Выбор преподавателя:</h3>
+        <select id="teacher">
+            <option> Преподаватель </option>
+        </select>
     </div>
     <div class="schedule">
         <div class="scheduleHeader">
             <button id="previousButton" onclick="changeWeek(false)" class="weekButton">Предыдущая неделя</button>
             <button id="previousDay" onclick="" class="dayButton">Предыдущий день</button>
+            <p class="select">6411-100503D</p>
             <button id="nextButton" onclick="changeWeek(true)" class="weekButton">Следующая неделя</button>
             <button id="nextDay" onclick="" class="dayButton">Следующий день</button>
         </div>
     </div>
     <div class="scheduleBody">
-        <table id="scheduleTable"></table>
+        <table id="scheduleBody"></table>
     </div>
 </body>
 </html>
